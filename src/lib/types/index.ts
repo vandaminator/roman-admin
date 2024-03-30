@@ -10,6 +10,9 @@ export interface Product {
 export interface Orders {
   id: number;
   user: number;
-  product: Product[];
+  products: Product[];
   delivered: boolean;
+  isDone: boolean;
+  price: number;
+  created_at: string;
 }

@@ -1,6 +1,5 @@
 import { join } from "path";
 import type { Config } from "tailwindcss";
-import { myCustomTheme } from "./src/themes/mycustomtheme";
 
 // 1. Import the Skeleton plugin
 import { skeleton } from "@skeletonlabs/tw-plugin";
@@ -22,7 +21,7 @@ const config = {
 
   plugins: [
     skeleton({
-      themes: { preset: [ "skeleton" ] }
+      themes: { preset: [ "skeleton", "wintry" ] }
     })
   ]
 } satisfies Config;

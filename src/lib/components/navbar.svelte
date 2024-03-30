@@ -17,11 +17,12 @@
   gridColumns="grid-cols-3"
   slotDefault="place-self-center"
   slotTrail="place-content-end"
+  class="mb-4"
 >
   <svelte:fragment slot="lead">
     <a
-      class="text-2xl font-bold text-secondary-400-500-token max-sm:hidden"
-      href="/">RomanScoops Admin</a
+      class="text-2xl font-bold text-primary-400-500-token max-sm:hidden"
+      href="/dashboard">RomanScoops Admin</a
     >
     <button
       type="button"

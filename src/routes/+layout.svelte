@@ -21,10 +21,12 @@
   <!-- (sidebarRight) -->
   <!-- (pageHeader) -->
   <!-- Router Slot -->
-  <slot />
+  <div class="mx-auto p-3 sm:w-[630px] md:w-[750px] lg:w-[1000px] xl:w-[1200px]">
+    <slot />
+  </div>
   <!-- ---- / ---- -->
   <!-- (pageFooter) -->
-  <svelte:fragment slot="footer">Footer</svelte:fragment>
+  <!-- <svelte:fragment slot="footer">Footer</svelte:fragment> -->
 </AppShell>
 
 <Drawer>
