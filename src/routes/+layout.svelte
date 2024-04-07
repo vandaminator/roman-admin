@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import "../app.pcss";
   import {
     AppShell,
@@ -8,9 +8,17 @@
     LightSwitch,
   } from "@skeletonlabs/skeleton";
   import Navbar from "$lib/components/navbar.svelte";
+  import { page } from "$app/stores";
+  import { redirect } from "@sveltejs/kit";
+  import type { LayoutData } from "./$types";
 
   initializeStores();
   const drawerStore = getDrawerStore();
+
+  export let data: LayoutData;
+  if (data.user === null && $page.url.pathname !== "/") {
+    redirect(307, "/")
+  }
 </script>
 
 <AppShell>
@@ -21,7 +29,9 @@
   <!-- (sidebarRight) -->
   <!-- (pageHeader) -->
   <!-- Router Slot -->
-  <div class="mx-auto p-3 sm:w-[630px] md:w-[750px] lg:w-[1000px] xl:w-[1200px]">
+  <div
+    class="mx-auto p-3 sm:w-[630px] md:w-[750px] lg:w-[1000px] xl:w-[1200px]"
+  >
     <slot />
   </div>
   <!-- ---- / ---- -->
