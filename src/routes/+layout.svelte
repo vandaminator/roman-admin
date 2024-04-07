@@ -6,6 +6,7 @@
     Drawer,
     getDrawerStore,
     LightSwitch,
+    Modal,
   } from "@skeletonlabs/skeleton";
   import Navbar from "$lib/components/navbar.svelte";
   import { page } from "$app/stores";
@@ -20,6 +21,8 @@
     redirect(307, "/")
   }
 </script>
+
+<Modal />
 
 <AppShell>
   <svelte:fragment slot="header">

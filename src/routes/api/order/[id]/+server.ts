@@ -1,5 +1,5 @@
 import { supabase } from "$lib/util/supabaseClient";
-import { error as Error } from "@sveltejs/kit";
+import { error as Error, text } from "@sveltejs/kit";
 import type { RequestHandler } from "./$types";
 import type { Orders } from "$lib/types";
 
@@ -56,6 +56,13 @@ export const PATCH: RequestHandler = async ({ params, url }) => {
   return new Response(`Order-${id} was updated`);
 };
 
-export const DELETE: RequestHandler = async ({ params, url }) => {
-  return new Response();
+export const DELETE: RequestHandler = async ({ params }) => {
+  const { id } = params;
+
+  const deleteReposne = await supabase.from("Orders").delete().eq("id", +id);
+  if (deleteReposne.error !== null) {
+    Error(400, { message: "Error in deleting the order" });
+    console.log(deleteReposne.error);
+  }
+  return text(`Order ${id} was deleted`);
 };

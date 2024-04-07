@@ -1,5 +1,5 @@
 import { supabase } from "$lib/util/supabaseClient";
-import { error } from "@sveltejs/kit";
+import { error, redirect } from "@sveltejs/kit";
 import type { Actions, PageServerLoad } from "./$types";
 
 export const load = (async ({ locals }) => {
@@ -31,6 +31,8 @@ export const actions = {
     if (sessionId === undefined) error(500);
 
     cookies.set("sessionid", sessionId, { path: "/" });
+
+    redirect(300, "/dashboard")
 
     return { success: true };
   },

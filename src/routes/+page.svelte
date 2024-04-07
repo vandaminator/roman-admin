@@ -1,15 +1,24 @@
 <script lang="ts">
-        export let data;
-    let email = ""
-    let password = ""
+  let email = "";
+  let password = "";
 </script>
 
-<form method="post" action="?/login">
-    <label for="email">Email: </label>
-    <input class="dark:bg-surface-400-500-token" id="email" name="email" type="email" bind:value={email}>
-    
-    <label for="password">Password: </label>
-    <input id="password" name="password" type="password" bind:value={password}>
+<form class="flex flex-col gap-3" method="post" action="?/login">
+  <label class="label" for="email">
+    <span>Email</span>
+    <input
+      class="input p-3"
+      id="email"
+      name="email"
+      type="email"
+      bind:value={email}
+    />
+  </label>
 
-    <button type="submit">Login</button>
+  <label class="label" for="password">
+    <span>Password</span>
+    <input class="input p-3" id="password" name="password" type="password" bind:value={password} />
+  </label>
+
+  <button class="btn variant-filled-primary mt-9" type="submit">Login</button>
 </form>
