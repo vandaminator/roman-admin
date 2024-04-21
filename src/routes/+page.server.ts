@@ -31,9 +31,6 @@ export const actions = {
     if (sessionId === undefined) error(500);
 
     cookies.set("sessionid", sessionId, { path: "/" });
-
-    redirect(300, "/dashboard")
-
     return { success: true };
   },
 

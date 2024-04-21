@@ -1,4 +1,3 @@
-import type { Orders } from "$lib/types";
 import { supabase } from "$lib/util/supabaseClient";
 import { error } from "@sveltejs/kit";
 
@@ -8,8 +7,8 @@ export const load = (async ({ params }) => {
   let orderRequest = await supabase.from("Orders").select("*").eq("id", +id);
   const order = orderRequest.data;
   if (order == null || order.length == 0)
-    throw error(404, { message: `Order ${id} does not exist` });
-  const info: Orders = order[0];
+    error(404, { message: `Order ${id} does not exist` });
+  const info = order[0];
 
   // getting user info
   let userRequest = await supabase
@@ -18,7 +17,7 @@ export const load = (async ({ params }) => {
     .eq("phoneNumber", info.user);
   const user = userRequest.data;
   if (user == null || user.length == 0)
-    throw error(404, { message: `user ${info.user} does not exist` });
+    error(404, { message: `user ${info.user} does not exist` });
   const userInfo = user[0];
 
   return { info, userInfo };

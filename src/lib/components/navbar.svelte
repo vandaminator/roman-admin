@@ -3,6 +3,8 @@
   import type { DrawerSettings } from "@skeletonlabs/skeleton";
   import Icon from "@iconify/svelte";
 
+  export let path: string;
+
   const drawerStore = getDrawerStore();
 
   const handleOpen = () => {
@@ -41,4 +43,14 @@
   <svelte:fragment slot="trail">
     <LightSwitch class="max-sm:hidden" />
   </svelte:fragment>
+  <!-- <svelte:fragment slot="headline">
+    <div class="flex items-center gap-1 text-secondary-500">
+      <button class="btn-icon variant-soft-surface"
+        ><Icon icon="entypo:home" /></button
+      >
+      {#each path.split("/").slice(1) as p}
+        /<a href={p}>{p}</a>
+      {/each}
+    </div>
+  </svelte:fragment> -->
 </AppBar>

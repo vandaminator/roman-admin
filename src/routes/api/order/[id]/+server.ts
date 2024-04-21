@@ -62,7 +62,6 @@ export const DELETE: RequestHandler = async ({ params }) => {
   const deleteReposne = await supabase.from("Orders").delete().eq("id", +id);
   if (deleteReposne.error !== null) {
     Error(400, { message: "Error in deleting the order" });
-    console.log(deleteReposne.error);
   }
   return text(`Order ${id} was deleted`);
 };

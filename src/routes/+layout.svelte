@@ -12,12 +12,15 @@
   import { page } from "$app/stores";
   import { redirect } from "@sveltejs/kit";
   import type { LayoutData } from "./$types";
+  import { goto } from "$app/navigation";
 
   initializeStores();
   const drawerStore = getDrawerStore();
 
   export let data: LayoutData;
-  if (data.user === null && $page.url.pathname !== "/") {
+  const notAuthedOnPage = data.user === null && $page.url.pathname !== "/"
+
+  if (notAuthedOnPage) {
     redirect(307, "/")
   }
 </script>
@@ -26,7 +29,7 @@
 
 <AppShell>
   <svelte:fragment slot="header">
-    <Navbar />
+    <Navbar path={$page.url.pathname}/>
   </svelte:fragment>
   <!-- (sidebarLeft) -->
   <!-- (sidebarRight) -->
