@@ -78,7 +78,7 @@
 
     <button
       class="btn bg-gradient-to-br variant-gradient-secondary-tertiary w-full"
-      type="submit">Create Product</button
+      type="submit">Update Product</button
     >
   </form>
 

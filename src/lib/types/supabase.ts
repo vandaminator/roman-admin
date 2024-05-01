@@ -5,6 +5,32 @@ export type Json = Product[]
 export type Database = {
   public: {
     Tables: {
+      Best: {
+        Row: {
+          created_at: string
+          id: number
+          product: number
+        }
+        Insert: {
+          created_at?: string
+          id?: number
+          product: number
+        }
+        Update: {
+          created_at?: string
+          id?: number
+          product?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "public_Best_product_fkey"
+            columns: ["product"]
+            isOneToOne: false
+            referencedRelation: "Products"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       Orders: {
         Row: {
           created_at: string
@@ -63,10 +89,31 @@ export type Database = {
         Update: {
           created_at?: string
           id?: number
-          img: string[]
+          img?: string[]
           name?: string
           price?: number
           qty?: number
+        }
+        Relationships: []
+      }
+      System: {
+        Row: {
+          created_at: string
+          id: number
+          name: string
+          value: string
+        }
+        Insert: {
+          created_at?: string
+          id?: number
+          name: string
+          value: string
+        }
+        Update: {
+          created_at?: string
+          id?: number
+          name?: string
+          value?: string
         }
         Relationships: []
       }
@@ -105,7 +152,7 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      Product: "id" | "title" | "price" | "qty"
     }
     CompositeTypes: {
       [_ in never]: never
